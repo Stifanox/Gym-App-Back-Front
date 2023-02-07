@@ -1,10 +1,13 @@
 import { SendInterface } from "./SendInterface.js";
 
+/**
+ * Wrapper to send error message to user.
+ */
 export class SendError implements SendInterface{
     status: string;
-    data: string;
+    data: any;
 
-    constructor(data:string) {
+    constructor(data:any) {
         this.status = "Error";
         this.data = data
     }

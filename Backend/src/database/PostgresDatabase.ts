@@ -4,7 +4,10 @@ export class PostgresDatabase{
     private static sequalize: Sequelize = null;
 
     
-
+    /**
+     * Establish connection to Postgresql database (if not already connected) than returns instance.
+     * @returns Database instance
+     */
     public static async getInstance() {
         if(PostgresDatabase.sequalize === null){
 

@@ -1,10 +1,14 @@
 import { Sequelize,QueryTypes } from "sequelize";
-import { DatabaseControllerInterface } from "./interfaces/DatabaseControllerInterface.js";
+import { DatabaseAdapterInterface } from "./interfaces/DatabaseAdapternterface.js";
 
 import { PostgresDatabase } from "./PostgresDatabase.js";
 
 //TODO: Owrapować wszystko w try catch 
-export class PostgresDBController implements DatabaseControllerInterface{
+/**
+ * Adapter for Postgresql database. It provide basic 4 query types to execute i.e. 
+ * SELECT, INSERT, UPDATE, DELETE
+ */
+class PostgresDBAdapter implements DatabaseAdapterInterface{
     private database:Sequelize
 
     constructor(){
@@ -18,7 +22,6 @@ export class PostgresDBController implements DatabaseControllerInterface{
     async insert(query: string, replacement: { [key: string]: string } | string[]): Promise<boolean> {
         try{
             const [result,howManyAdded] = await this.database.query(query,{type:QueryTypes.INSERT,replacements:replacement})
-            //TODO: zastanowić się czy nie powinno być inaczej to zrobione
             if(howManyAdded > 0) return true
             else return false
         }
@@ -41,3 +44,5 @@ export class PostgresDBController implements DatabaseControllerInterface{
         this.database = await PostgresDatabase.getInstance()
     }
 }
+
+export default new PostgresDBAdapter()
