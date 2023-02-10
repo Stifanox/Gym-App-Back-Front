@@ -11,3 +11,18 @@ export function createWebToken(data:object,secret:string,expiresIn:number = 8640
 
     return token
 }
+
+/**
+ * Verify token provided by client.
+ * @param token Client token to verify
+ * @param secret Secret to decrypt token
+ * @returns Decoded object or false if token was invalid.
+ */
+export function verifyWebToken(token:string, secret:string):jwt.JwtPayload|boolean{
+    try{
+        const userDecoded = jwt.verify(token,secret)
+        return (userDecoded as jwt.JwtPayload)
+    }catch(err){
+        return false
+    }
+}

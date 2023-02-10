@@ -30,13 +30,14 @@ class PostgresDBAdapter implements DatabaseAdapterInterface{
         }
         
     }
-    update(query: string, replacement: { [key: string]: string } | string[]): boolean {
-        const result = this.database.query(query,{type:QueryTypes.UPDATE,replacements:replacement})
-       return true
+    async update(query: string, replacement: { [key: string]: string } | string[]): Promise<boolean> {
+        const result = await this.database.query(query,{type:QueryTypes.UPDATE,replacements:replacement})
+        const isAdded = result[1] > 0 ? true : false
+        return isAdded
     }
-    delete(query: string, replacement: { [key: string]: string } | string[]): boolean {
+    delete(query: string, replacement: { [key: string]: string } | string[]): Promise<boolean> {
         const result = this.database.query(query,{type:QueryTypes.DELETE,replacements:replacement})
-        return true
+        return Promise.resolve(true)
     }
    
 

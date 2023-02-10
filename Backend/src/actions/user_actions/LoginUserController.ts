@@ -27,6 +27,10 @@ class LoginUserController{
 
         if(result) {
             res.status(200)
+            res.cookie("JWT",result["token"],{
+                maxAge:8640000,
+                httpOnly:true
+            })
             res.end(new SendSuccess(result).stringify())
         }
         else {
@@ -52,9 +56,11 @@ class LoginUserController{
         
         const token = createWebToken(userAdapter.getPlaneUser(),process.env.SECRET_TOKEN,86400)
         const tokenRefresh = createWebToken(userAdapter.getPlaneUser(),process.env.SECRET_TOKEN_REFRESH,86400*60);
-
-        //FIXME: może zwrócić object z jakieś klasy konkretnej
-        if(arePassTheSame) return {token: token, tokenRefresh:tokenRefresh}
+        
+        if(arePassTheSame) {
+            this.gateway.setRefreshTokenById(userAdapter.id,tokenRefresh)
+            return {token: token, tokenRefresh:tokenRefresh}
+        }
         else return false
     }
 }

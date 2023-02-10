@@ -14,4 +14,7 @@ export class LoginUserGateway {
         const userAccount = await this.controller.select("SELECT * FROM users WHERE username = :username",{username:username})
         return userAccount
     }
+    setRefreshTokenById(id:number,refreshToken:string){
+        this.controller.update("UPDATE users SET refresh_token = :refreshToken WHERE id = :id",{refreshToken:refreshToken,id:id})
+    }
 }
