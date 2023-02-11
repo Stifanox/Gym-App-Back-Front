@@ -1,11 +1,11 @@
 import { Request, Response } from "express"
-import PostgresDBController from "../../database/PostgresDBController.js"
-import { LoginUserGateway } from "../../gateways/LoginUserGateway.js"
-import { SendError } from "../../responses/SendError.js"
-import { SendSuccess } from "../../responses/SendSuccess.js"
-import { CompareStrings } from "../../utils/user_utils/functions/CryptUtils.js"
-import { UserAdapter } from "../../utils/user_utils/classes/UserAdapter.js"
-import { createWebToken } from "../../utils/user_utils/functions/WebtokenUtils.js"
+import PostgresDBController from "../../../database/PostgresDBController.js"
+import { SendError } from "../../../responses/SendError.js"
+import { SendSuccess } from "../../../responses/SendSuccess.js"
+import { CompareStrings } from "../../../utils/user_utils/functions/CryptUtils.js"
+import { UserAdapter } from "../../../utils/user_utils/classes/UserAdapter.js"
+import { createWebToken } from "../../../utils/user_utils/functions/WebtokenUtils.js"
+import { LoginUserGateway } from "../../../gateways/client_gateways/LoginUserGateway.js"
 
 /**
  * Controler responsible for logining to application

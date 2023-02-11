@@ -6,5 +6,5 @@
         "sourceMap": true,
         "outDir": "dist"
     },
-    "include": ["src/**/*", "src/actions/user_actions/RegisterUserController.ts"]
+    "include": ["src/**/*", "src/actions/user_actions/client_actions/RegisterUserController.ts"]
 }

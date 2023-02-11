@@ -1,5 +1,5 @@
 import { Sequelize,QueryTypes } from "sequelize";
-import { DatabaseAdapterInterface } from "./interfaces/DatabaseAdapternterface.js";
+import { DatabaseAdapter } from "./interfaces/DatabaseAdapternterface.js";
 
 import { PostgresDatabase } from "./PostgresDatabase.js";
 
@@ -8,7 +8,7 @@ import { PostgresDatabase } from "./PostgresDatabase.js";
  * Adapter for Postgresql database. It provide basic 4 query types to execute i.e. 
  * SELECT, INSERT, UPDATE, DELETE
  */
-class PostgresDBAdapter implements DatabaseAdapterInterface{
+class PostgresDBAdapter implements DatabaseAdapter{
     private database:Sequelize
 
     constructor(){
@@ -26,14 +26,15 @@ class PostgresDBAdapter implements DatabaseAdapterInterface{
             else return false
         }
         catch(error){
-            console.log("Coudln't : ",error);
+            console.log("Coudln't resolve query");
+            return false
         }
         
     }
     async update(query: string, replacement: { [key: string]: string } | string[]): Promise<boolean> {
         const result = await this.database.query(query,{type:QueryTypes.UPDATE,replacements:replacement})
-        const isAdded = result[1] > 0 ? true : false
-        return isAdded
+        const doesUpdated = result[1] > 0 ? true : false
+        return doesUpdated
     }
     delete(query: string, replacement: { [key: string]: string } | string[]): Promise<boolean> {
         const result = this.database.query(query,{type:QueryTypes.DELETE,replacements:replacement})

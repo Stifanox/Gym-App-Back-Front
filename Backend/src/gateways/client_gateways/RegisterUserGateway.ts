@@ -1,14 +1,12 @@
-import { DatabaseAdapterInterface } from "../database/interfaces/DatabaseAdapternterface.js"
+import { DatabaseAdapter } from "../../database/interfaces/DatabaseAdapternterface.js"
 
 /**
  * Class responsible for all neccesary call to database to register user.
  */
 export class RegisterUserGateway{
-    private controller:DatabaseAdapterInterface
+    
 
-    constructor(controller:DatabaseAdapterInterface){
-        this.controller = controller
-    }
+    constructor(private controller:DatabaseAdapter){}
     /**
      * Makes call to database to create user.
      * @param username Username

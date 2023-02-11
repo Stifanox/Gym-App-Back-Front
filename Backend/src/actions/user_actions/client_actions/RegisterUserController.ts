@@ -1,9 +1,9 @@
-import { CryptString } from "../../utils/user_utils/functions/CryptUtils.js";
-import { RegisterUserGateway } from "../../gateways/RegisterUserGateway.js";
-import { SendSuccess } from "../../responses/SendSuccess.js";
-import { SendError } from "../../responses/SendError.js";
+import { CryptString } from "../../../utils/user_utils/functions/CryptUtils.js";
+import { RegisterUserGateway } from "../../../gateways/client_gateways/RegisterUserGateway.js";
+import { SendSuccess } from "../../../responses/SendSuccess.js";
+import { SendError } from "../../../responses/SendError.js";
 import { Request,Response } from "express";
-import PostgresDBController from "../../database/PostgresDBController.js";
+import PostgresDBController from "../../../database/PostgresDBController.js";
 
 //TODO: dodać gateway ale jakoś dynamicznie nie?
 /**

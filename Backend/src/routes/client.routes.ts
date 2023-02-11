@@ -1,8 +1,7 @@
 import express from "express"
-import RegisterUserController from "../actions/user_actions/RegisterUserController.js";
-import LoginUserController  from "../actions/user_actions/LoginUserController.js";
-import { authenticate } from "../middleware/authenticate.js";
+import RegisterUserController from "../actions/user_actions/client_actions/RegisterUserController.js";
 import cookieParser from 'cookie-parser'
+import LoginUserController from "../actions/user_actions/client_actions/LoginUserController.js";
 
 
 
