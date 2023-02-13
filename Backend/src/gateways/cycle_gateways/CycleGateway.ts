@@ -5,12 +5,12 @@ export class CycleGateway{
     constructor(private controller:DatabaseAdapter){}
 
     async getCycleById(id:number):Promise<object[]>{
-        const result = await this.controller.select("SELECT * FROM exercises WHERE id = :id",{id:id})
+        const result = await this.controller.select("SELECT * FROM training_cycle WHERE id = :id",{id:id})
         return result
     }
 
     async getCyclesByUserId(userId:number){
-        const result = await this.controller.select("SELECT * FROM exercises WHERE user_id = :userId",{userId:userId})
+        const result = await this.controller.select("SELECT * FROM training_cycle WHERE user_id = :userId",{userId:userId})
         return result
     }
 

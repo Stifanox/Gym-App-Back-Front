@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { SendError } from "../responses/SendError.js";
 import { verifyWebToken } from "../utils/user_utils/functions/WebtokenUtils.js";
 
-//TODO: zapytać klimka jak to zrobić mądrze
+//TODO: zapytać jak to zrobić mądrze
 /**
  * Middleware to verify whether client is logged in ot not.
  */

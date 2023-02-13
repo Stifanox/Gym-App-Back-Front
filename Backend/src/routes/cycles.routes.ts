@@ -2,6 +2,7 @@ import express from "express"
 import { authenticate } from "../middleware/authenticate.js"
 import cookieParser from "cookie-parser"
 import CycleController from "../actions/user_actions/cycles_routes/CycleController.js"
+import TrainingDayController from "../actions/user_actions/cycles_routes/TrainingDayController.js"
 
 const router = express.Router()
 
@@ -11,28 +12,20 @@ router.use(cookieParser())
 
 router.use(authenticate)
 
+router.get("/user",CycleController.requestGetCyclesByUserId.bind(CycleController))
+
 router.get("/:id",CycleController.requestGetCycleById.bind(CycleController))
 
 router.post("/", CycleController.requestAddNewCycle.bind(CycleController))
 
 router.put("/", CycleController.requestEditCycle.bind(CycleController))
 
-router.get("/user/:id",CycleController.requestGetCyclesByUSerId.bind(CycleController))
+router.get("/training-day/:id",TrainingDayController.requestGetTrainingByCycleId.bind(TrainingDayController))
 
-router.post("/training-day")
+router.post("/training-day",TrainingDayController.requestAddNewTrainingDays.bind(TrainingDayController))
 
-router.put("/training-day")
+router.put("/training-day",TrainingDayController.requestUpdateTrainingDays.bind(TrainingDayController))
 
+router.delete("/training-day",TrainingDayController.requestDeleteTrainingDays.bind(TrainingDayController))
 
-//cycle by id
-
-//cycles by user id
-
-//add cycle
-
-//add training day to cycle
-
-//edit cycle
-
-// edit training day
-
+export default router

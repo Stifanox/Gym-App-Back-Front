@@ -22,11 +22,10 @@ class CycleController{
         res.end(new SendSuccess(result).stringify())
     }
 
-    async requestGetCyclesByUSerId(req:Request,res:Response){
-        //Moze za pomocą webtokena a nie jako param
-        const id = parseInt(req.params.id)
-
-        const result = await this.gateway.getCyclesByUserId(id)
+    async requestGetCyclesByUserId(req:Request,res:Response){
+        const user = verifyWebToken(req.cookies.JWT,process.env.SECRET_TOKEN)
+        
+        const result = await this.gateway.getCyclesByUserId(user["id"])
 
         res.status(200)
         res.end(new SendSuccess(result).stringify())

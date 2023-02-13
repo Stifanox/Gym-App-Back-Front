@@ -26,7 +26,7 @@ class PostgresDBAdapter implements DatabaseAdapter{
             else return false
         }
         catch(error){
-            console.log("Coudln't resolve query");
+            console.log("Coudln't resolve query\n",error);
             return false
         }
         
