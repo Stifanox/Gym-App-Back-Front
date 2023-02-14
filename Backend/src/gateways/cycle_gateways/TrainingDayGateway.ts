@@ -1,4 +1,4 @@
-import { TrainingDay } from "../../actions/user_actions/cycles_routes/TrainingDay.js";
+import { TrainingDay } from "../../actions/user_actions/cycles_actions/TrainingDay.js";
 import { DatabaseAdapter } from "../../database/interfaces/DatabaseAdapternterface.js";
 
 export class TrainingDayGateway{
