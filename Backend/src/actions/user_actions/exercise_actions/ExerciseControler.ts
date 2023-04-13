@@ -15,6 +15,7 @@ class ExerciseController{
         const result = await this.gateway.getAllExercises()
 
         res.status(200)
+        res.contentType("application/json")
         res.end(new SendSuccess(result).stringify())
     }
 
@@ -37,6 +38,20 @@ class ExerciseController{
         }else{
             res.status(200)
             res.end(new SendError("Adding exercise was not successful").stringify())
+        }
+    }
+
+    async requestDeleteExerciseById(req:Request,res:Response){
+        const id = parseInt(req.params.id)
+        console.log("call");
+        const result = await this.gateway.deleteExerciseById(id)
+
+        if(result){
+            res.status(200)
+            res.end(new SendSuccess("Exercise deleted").stringify())
+        }else{
+            res.status(200)
+            res.end(new SendError("Couldn't delete exercise").stringify())
         }
     }
 }

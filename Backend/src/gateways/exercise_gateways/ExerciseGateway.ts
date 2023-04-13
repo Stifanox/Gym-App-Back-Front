@@ -18,4 +18,9 @@ export class ExerciseGateway{
         const result = this.controller.insert("INSERT INTO exercise(exercise_name, exercise_type) VALUES (:name, :type)",{name:name.toLowerCase(),type:type})
         return result
     }
+
+    async deleteExerciseById(id:number):Promise<boolean>{
+        const result = this.controller.delete("DELETE FROM exercise WHERE id = :id",{id: id})
+        return result
+    }
 }

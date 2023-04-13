@@ -3,7 +3,7 @@ import PostgresDBController from "../../../database/PostgresDBController.js"
 import { HistoryGateway } from "../../../gateways/cycle_gateways/HistoryGateway.js"
 import { SendSuccess } from "../../../responses/SendSuccess.js"
 import { verifyWebToken } from "../../../utils/user_utils/functions/WebtokenUtils.js"
-import { TrainingDay } from "./TrainingDay.js"
+import { TrainingDay } from "./interfaces/TrainingDay.js"
 
 class HistoryController{
 

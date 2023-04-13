@@ -3,7 +3,7 @@ import PostgresDBController from "../../../database/PostgresDBController.js";
 import { TrainingDayGateway } from "../../../gateways/cycle_gateways/TrainingDayGateway.js";
 import { SendError } from "../../../responses/SendError.js";
 import { SendSuccess } from "../../../responses/SendSuccess.js";
-import { TrainingDay, TrainingDayWithId } from "./TrainingDay.js";
+import { TrainingDay, TrainingDayWithId } from "./interfaces/TrainingDay.js";
 
 class TrainingDayController{
     private gateway:TrainingDayGateway

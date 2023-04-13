@@ -9,6 +9,7 @@ import { fileURLToPath } from "url";
 
 const app = express()
 
+//TODO:zrobić funkcje wrapujące na responsy w controlerach
 //FIXME: naprawić aby później poprawie czytało (teraz trzeba kombinować ze ścieżką)
 //It's done to fix problem with reading .env file
 const filename = fileURLToPath(import.meta.url)
