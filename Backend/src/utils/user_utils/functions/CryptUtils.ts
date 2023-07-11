@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt"
 
+//FIXME: Change salt later to be included in .env file 
 export function CryptString(text:string):Promise<string>{
     return new Promise((resolve,reject)=>{
         const salt = 10

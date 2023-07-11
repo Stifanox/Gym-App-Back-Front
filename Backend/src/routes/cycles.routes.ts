@@ -21,6 +21,8 @@ router.post("/", CycleController.requestAddNewCycle.bind(CycleController))
 
 router.put("/", CycleController.requestEditCycle.bind(CycleController))
 
+router.delete("/:name", CycleController.requestDeleteCycle.bind(CycleController))
+
 router.get("/training-day/:id",TrainingDayController.requestGetTrainingByCycleId.bind(TrainingDayController))
 
 router.post("/training-day",TrainingDayController.requestAddNewTrainingDays.bind(TrainingDayController))

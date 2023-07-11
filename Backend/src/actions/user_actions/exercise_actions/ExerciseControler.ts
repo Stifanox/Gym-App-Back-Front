@@ -43,7 +43,6 @@ class ExerciseController{
 
     async requestDeleteExerciseById(req:Request,res:Response){
         const id = parseInt(req.params.id)
-        console.log("call");
         const result = await this.gateway.deleteExerciseById(id)
 
         if(result){

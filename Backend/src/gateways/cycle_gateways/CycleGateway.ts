@@ -23,4 +23,9 @@ export class CycleGateway{
         const result = await this.controller.update("UPDATE training_cycle SET cycle_name = :cycleName WHERE id = :id",{cycleName:name,id:id})
         return result
     }
+
+    async deleteCycle(name:string, id:number){
+        const result = await this.controller.delete("DELETE FROM training_cycle WHERE cycle_name = :cycleName AND user_id = :id",{cycleName:name, id:id})
+        return result
+    }
 }

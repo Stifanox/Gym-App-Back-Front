@@ -35,7 +35,7 @@ class CycleController{
         const {name} = req.body
         const user = verifyWebToken(req.cookies.JWT,process.env.SECRET_TOKEN)
 
-        const result = await this.gateway.addNewCycle(name,user["id"])
+        const result = await this.gateway.addNewCycle((name as string).toLowerCase(),user["id"])
 
         if(result){
             res.status(200)
@@ -57,6 +57,22 @@ class CycleController{
         }else{
             res.status(200)
             res.end(new SendError("Couldn't change name of a cycle").stringify())
+        }
+    }
+
+    async requestDeleteCycle(req:Request, res:Response){
+        const name = req.params.name
+
+        const user = verifyWebToken(req.cookies.JWT,process.env.SECRET_TOKEN)
+
+        const result = await this.gateway.deleteCycle(name, user["id"])
+
+        if(result){
+            res.status(200)
+            res.end(new SendSuccess("Deleted cycles").stringify())
+        }else{
+            res.status(200)
+            res.end(new SendError("Couldn't delete cycles").stringify())
         }
     }
 }
